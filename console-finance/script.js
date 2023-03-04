@@ -99,38 +99,95 @@ var finances = [
     const financesMoney = finances.map((x) => x[1])
 
 
+    // To display Total Amount
+
+    let totalAmount = 0
+
+    for (i=0; i<financesMoney.length; i++) {
+        totalAmount += financesMoney[i]
+    }
+
+
+    // To create arrays of changes to profit and loss amounts
+
+    let changesArray = []
+
+        for (let i = 0; i < finances.length - 1; i++) {
+
+        changesArray.push(finances[i + 1][1] - finances[i][1])
+
+    }
+
+
+    // Total of all changes in profits to calculate the average change
+
+    let totalChanges = 0
+
+    for (let i = 0; i < changesArray.length; i++) {
+
+        totalChanges += changesArray[i]
+
+    }
+
+    // Average change
+
+    let averageChange = (totalChanges/changesArray.length).toFixed(2)
+    
+
+    // To display max change
+
+    let maxChange = 0
+
+    let maxChangeMonth
+
+
+    for (i=0; i<changesArray.length; i++) {
+
+        if(changesArray[i] > maxChange) {
+            maxChange = changesArray[i]
+            maxChangeMonth = financesTime[i+1]
+        }
+    
+    }
+
+    // To display min change 
+
+    let minChange = 0
+
+    let minChangeMonth
+
+    for (i=0; i<changesArray.length; i++) {
+
+        if(changesArray[i] < minChange) {
+            minChange = changesArray[i]
+            minChangeMonth = financesTime[i+1]
+        }
+    
+    }
+
+
     // Results in console
 
     console.log('Financial Analysis');
 
     console.log('-------------------------------------------')
 
-    // To display total months
+    // To display Total Months
 
     console.log('Total Months: ' + finances.length)
 
     // To display Total Amount
 
-    let totalAmount = 0
+    console.log('Total: $' + totalAmount)
 
-    for (i=0; i<financesMoney.length; i++) {
-        totalAmount = totalAmount + financesMoney[i]
-    }
+    // To display Average Amount
 
-    console.log('Total: ' + totalAmount)
+    console.log('Average Change: $' + averageChange)
 
-    // To display average amount
+    // To display Greatest Profit Change Amount
 
-    let avgAmount = totalAmount/finances.length
+    console.log('Greatest Profit: ' + maxChangeMonth + ' $' + maxChange)
 
-    // for (i=0; i<financesMoney.length; i++) {
-    //     avgAmount = totalAmount/finances.length
-    // }
+    // To display Greatest Loss Change Amount
 
-    console.log('Average Change: ' + avgAmount)
-
-
-
-    
-
-    
+    console.log('Greatest Loss: ' + minChangeMonth + ' $' + minChange)
