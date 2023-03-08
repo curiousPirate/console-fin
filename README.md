@@ -2,7 +2,7 @@
 
 ## Problem-Statement
 
--From a given dataset of arrays containing ['Month':'Year'] : [Profit/Loss]
+-From a given dataset of arrays containing ['Month':'Year'] : [Profit/Loss] /n
 -We need to find the total months and amount, find the average of changes & find greatest profit & loss changes
 
 ## URL
